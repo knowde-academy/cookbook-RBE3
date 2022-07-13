@@ -14,27 +14,20 @@ module Api
       def create
         @recipe = Recipe.new(recipe_params)
         
-  
         if @recipe.save
           render json: @recipe
         else
           render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
         end
-        
-      
-        
       end
 
       def update
         
-
-       
         if @recipe.update(recipe_params)
           render json: @recipe
         else
           render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
         end
-        
       end
 
       def destroy
@@ -54,8 +47,6 @@ module Api
       def set_recipe
         @recipe = Recipe.find(params[:id])
       end
-      
-      
     end
   end
 end

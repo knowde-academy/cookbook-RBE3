@@ -4,8 +4,7 @@ class RecipeSerializer < ActiveModel::Serializer
   def cooking_time
       
       return "unknown" if object.cooking_time.blank?
+      object.cooking_time
   
   end
-     
- 
 end

@@ -2,6 +2,7 @@ module Api
   module V1
     class RecipesController < ApplicationController
       before_action :set_recipe, except: %i[create index]
+      
       def index
         render json: { data: ActiveModel::SerializableResource.new(Recipe.all, each_serializer: RecipeSerializer) }
       end
@@ -17,6 +18,7 @@ module Api
         else
           render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
         end
+        
       end
 
       def update
@@ -38,7 +40,7 @@ module Api
       private
 
       def recipe_params
-        params.require(:recipe).permit(%i[name content])
+        params.require(:recipe).permit(%i[name content price])
       end
 
       def set_recipe
@@ -47,3 +49,4 @@ module Api
     end
   end
 end
+

@@ -3,8 +3,8 @@ class RecipeSerializer < ActiveModel::Serializer
   
     def price
       
-        object.price = "unknown" if object.price.blank?
-        return object.price
+        return "unknow" if object.price.blank?
+        object.price
         
     end
 end

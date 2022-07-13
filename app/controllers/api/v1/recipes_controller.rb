@@ -3,10 +3,6 @@ module Api
     class RecipesController < ApplicationController
       before_action :set_recipe, except: %i[create index]
       
-      def check_time
-        @recipe.cooking_time = "unknown" if params[:cooking_time].blank?
-      end
-        
       def index
         render json: { data: ActiveModel::SerializableResource.new(Recipe.all, each_serializer: RecipeSerializer) }
       end
@@ -25,13 +21,13 @@ module Api
           render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
         end
         
-        check_time
+      
         
       end
 
       def update
         
-       check_time
+
        
         if @recipe.update(recipe_params)
           render json: @recipe

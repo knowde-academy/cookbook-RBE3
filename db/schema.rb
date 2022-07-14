@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_202525) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "price"
     t.string "video_link"
+    t.string "cooking_time"
   end
 
 end

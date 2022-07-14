@@ -32,11 +32,7 @@ module Api
       end
       private
       def recipe_params
-<<<<<<< HEAD
-        params.require(:recipe).permit(%i[name content price video_link])
-=======
-        params.require(:recipe).permit(%i[name content cooking_time price])
->>>>>>> main
+        params.require(:recipe).permit(%i[name content price video_link cooking_time])
       end
       def set_recipe
         @recipe = Recipe.find(params[:id])

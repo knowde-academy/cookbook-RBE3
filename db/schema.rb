@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_07_14_092058) do
     t.string "price"
     t.string "video_link"
     t.string "cooking_time"
+    t.integer "level"
   end
 
 end

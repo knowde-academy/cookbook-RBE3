@@ -1,5 +1,5 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :content, :price, :video_link, :cooking_time
+  attributes :id, :name, :content, :price, :video_link, :cooking_time, :comments
   
   def price
     return "unknow" if object.price.blank?

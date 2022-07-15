@@ -16,7 +16,7 @@ module Api
         if @recipe.save
           render json: @recipe
         else
-          render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
+          render json: { errors: @recipe.errors.messages }, status: :unprocessable_entity
         end
       end
       

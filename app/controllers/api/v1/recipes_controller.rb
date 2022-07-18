@@ -16,7 +16,7 @@ module Api
         if @recipe.save
           render json: @recipe
         else
-          render json: { errors: @recipe.errors.to_s }, status: :unprocessable_entity
+          render json: { errors: @recipe.errors.messages }, status: :unprocessable_entity
         end
       end
       
@@ -38,7 +38,7 @@ module Api
       private
       
       def recipe_params
-        params.require(:recipe).permit(%i[name content price video_link cooking_time])
+        params.require(:recipe).permit(%i[name content price video_link level cooking_time])
       end
       
       def set_recipe

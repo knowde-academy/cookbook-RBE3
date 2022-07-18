@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2022_07_18_084903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.string "author"
+    t.string "body"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "quantity"
@@ -22,14 +31,23 @@ ActiveRecord::Schema.define(version: 2022_07_18_084903) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_rates_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "level"
     t.string "price"
-    t.string "video_link"
     t.string "cooking_time"
+    t.string "video_link", default: "unknow"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +75,6 @@ ActiveRecord::Schema.define(version: 2022_07_18_084903) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "comments", "recipes"
+  add_foreign_key "rates", "recipes"
 end

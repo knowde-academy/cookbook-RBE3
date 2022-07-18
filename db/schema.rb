@@ -48,10 +48,6 @@ ActiveRecord::Schema.define(version: 2022_07_18_105220) do
     t.string "video_link"
     t.string "cooking_time"
     t.integer "level"
-<<<<<<< HEAD
-=======
-    t.string "video_link"
->>>>>>> origin/BE-08_Add_sign_in/sign_up
   end
 
   create_table "users", force: :cascade do |t|

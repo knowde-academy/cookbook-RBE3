@@ -2,7 +2,7 @@ module Api
     module V1
         class ProductsController < ApplicationController
           before_action :set_product, except: %i[create index]
-          
+          before_action :authenticate_user!, only: %i[create]
           def index
             render json: { data: ActiveModel::SerializableResource.new(Product.all, each_serializer: ProductSerializer) }
           end
@@ -12,9 +12,10 @@ module Api
           end
           
           def create
-            @product = Product.new(product_params)
+          @recipe = Recipe.find(params[:recipe_id])
+          @product = @recipe.products.create(product_params)
             if @product.save
-              render json: @product
+              render json: @product 
             else
               render json: { errors: @product.errors.to_s }, status: :unprocessable_entity
             end

@@ -6,10 +6,8 @@ Rails.application.routes.draw do
       resources :recipes do
         resources :rates
         resources :comments
+        resources :products
       end
-      
-      resources :products
-      
     end
   end
 end

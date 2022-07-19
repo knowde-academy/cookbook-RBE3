@@ -17,7 +17,7 @@ module Api
             if @product.save
               render json: @product 
             else
-              render json: { errors: @product.errors.messages }, status: :unprocessable_entity
+              render json: { errors: @product.errors.to_s }, status: :unprocessable_entity
             end
           end
           

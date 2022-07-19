@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   has_many :comments, -> { order(created_at: :desc) }
   has_many :rates
+  has_many :products
   
   validates :name, presence: true
   validates :price, numericality: { only_integer: true }, allow_nil: true

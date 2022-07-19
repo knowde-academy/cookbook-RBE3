@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_105220) do
+ActiveRecord::Schema.define(version: 2022_07_19_072025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_07_18_105220) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "recipe_id", null: false
   end
 
   create_table "rates", force: :cascade do |t|
@@ -48,6 +49,8 @@ ActiveRecord::Schema.define(version: 2022_07_18_105220) do
     t.string "video_link"
     t.string "cooking_time"
     t.integer "level"
+    t.bigint "{:null=>false, :foreign_key=>true}_id"
+    t.index ["{:null=>false, :foreign_key=>true}_id"], name: "index_recipes_on_{:null=>false, :foreign_key=>true}_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,7 +1,7 @@
 module Api
   module V1
     class RatesController < ApplicationController
-      before_action :authenticate_user!, :only => [:create]
+      before_action :authenticate_user!, only: [:create]
       def create
         @recipe = Recipe.find(params[:recipe_id])
         @rate = @recipe.rates.create(rate_params)

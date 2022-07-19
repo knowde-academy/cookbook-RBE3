@@ -1,7 +1,7 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      
+      before_action :authenticate_user!, only: %i[create]
       def index
         render json: { data: ActiveModel::SerializableResource.new(Comment.all, each_serializer: RecipeSerializer) }
       end
@@ -25,8 +25,6 @@ module Api
       def comment_params
         params.require(:comment).permit(%i[ author body ])
       end
-      
-      
     end
   end
 end
